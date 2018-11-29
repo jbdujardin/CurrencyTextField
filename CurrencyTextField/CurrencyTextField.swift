@@ -16,7 +16,7 @@ import UIKit
     private let currencyFormatter = NumberFormatter()
     private var previousValue = ""
     
-    var value: Double {
+    public var value: Double {
         get { return Double(getCleanNumberString()) ?? 0 / 100 }
         set { setAmount(newValue) }
     }
