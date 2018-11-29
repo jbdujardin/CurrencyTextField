@@ -17,7 +17,7 @@ import UIKit
     private var previousValue = ""
     
     public var value: Double {
-        get { return Double(getCleanNumberString()) ?? 0 / 100 }
+        get { return (Double(getCleanNumberString()) ?? 0) / 100.0 }
         set { setAmount(newValue) }
     }
     
