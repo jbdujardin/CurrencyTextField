@@ -35,6 +35,7 @@ import UIKit
     
     func initTextField(){
         self.keyboardType = UIKeyboardType.decimalPad
+        self.delegate = self
         currencyFormatter.numberStyle = .currency
         currencyFormatter.minimumFractionDigits = 2
         currencyFormatter.maximumFractionDigits = 2
@@ -97,4 +98,19 @@ import UIKit
             }
         }
     }
+}
+
+extension CurrencyTextField : UITextFieldDelegate {
+    
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string == "" {
+            let cleanNumericString = getCleanNumberString().dropLast()
+            let textFieldNumber = Double(cleanNumericString)
+            setAmount(textFieldNumber! / 100)
+            return false
+        }else {
+            return true
+        }
+    }
+    
 }
